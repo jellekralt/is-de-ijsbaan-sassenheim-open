@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Is de Ijsbaan Sassenheim open?</title>
+
+  <meta name="description" content="Bekijk hier of de ijsbaan in Sassenheim open is">
+
+  <!-- Mobile-friendly viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Style sheet link -->
+  <link href="main.css" rel="stylesheet" media="all">
+</head>
+<body>
+  <div class="container">
+    <div class="container__content">
+      <h1 class="container__title">
+        <%= today && today.open ? 'Ja!' : 'Nee' %>
+      </h1>
+      <% if ((today && !today.open && today.openLater) || (!today || !today.open && tomorrow)) { %>
+      <p class="container__text container__text--highlight">
+        Maar hij gaat <%= !today || !today.openLater && tomorrow ? 'morgen' : '' %> 
+        om <%= today.openLater ? today.from : tomorrow.from %>:00 open!
+      </p>
+      <% } %>
+
+      <p class="container__text">
+        Op de hoogte blijven? Schrijf je in voor de <a href="http://ymlp.com/xgmwqsmsgmgq">nieuwsbrief</a>, of volg <a href="https://twitter.com/@IJsclubSassem">@IJsclubSassem op Twitter</a> 
+      </p>
+    </div>
+  </div>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-90727618-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
