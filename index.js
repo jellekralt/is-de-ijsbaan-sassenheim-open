@@ -1,8 +1,11 @@
 const moment = require('moment');
 const express = require('express');
+const helmet = require('helmet');
 const app = express();
 
 const schedule = require('./schedule.json');
+
+app.use(helmet())
 
 app.set('port', (process.env.PORT || 5000))
 app.set('view engine', 'ejs');
