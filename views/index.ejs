@@ -17,12 +17,6 @@
       <h1 class="container__title">
         <%= today && today.open ? 'Ja!' : 'Nee' %>
       </h1>
-      <% if ((today && !today.open && today.openLater) || (!today || !today.open && tomorrow)) { %>
-      <p class="container__text container__text--highlight">
-        Maar hij gaat <%= !today || !today.openLater && tomorrow ? 'morgen' : '' %> 
-        om <%= today.openLater ? today.from : tomorrow.from %>:00 open!
-      </p>
-      <% } %>
 
       <p class="container__text">
         Op de hoogte blijven? Schrijf je in voor de <a href="http://ymlp.com/xgmwqsmsgmgq">nieuwsbrief</a>, of volg <a href="https://twitter.com/@IJsclubSassem">@IJsclubSassem op Twitter</a> 
