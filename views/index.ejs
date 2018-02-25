@@ -15,8 +15,22 @@
   <div class="container">
     <div class="container__content">
       <h1 class="container__title">
-        <%= today && today.open ? 'Ja!' : 'Nee' %>
+        <%= planning.isOpenNow ? 'Ja!' : 'Nee' %>
       </h1>
+
+      <% if (!planning.isOpen && planning.next) { %>
+        <p class="container__text--highlight">
+          Maar hij gaat 
+          <% if(isToday(planning.next.start.dateTime)) { %>
+            <span>vandaag</span>
+          <% } else if(isTomorrow(planning.next.start.dateTime)) { %>
+            <span>morgen</span>
+          <% } else { %>
+            <span><%= format(planning.next.start.dateTime, 'dddd D MMMM') %><span>
+          <% } %>
+          om <%= format(planning.next.start.dateTime, 'HH:mm') %> weer open!
+        </p>
+      <% } %>
 
       <p class="container__text">
         Op de hoogte blijven? Schrijf je in voor de <a href="http://ymlp.com/xgmwqsmsgmgq">nieuwsbrief</a>, of volg <a href="https://twitter.com/@IJsclubSassem">@IJsclubSassem op Twitter</a> 
