@@ -18,7 +18,13 @@
         <%= planning.isOpenNow ? 'Ja!' : 'Nee' %>
       </h1>
 
-      <% if (!planning.isOpen && planning.next) { %>
+      <% if (planning.isOpenNow && planning.now) { %>
+        <p class="container__text--highlight">
+          De ijsbaan is tot <%= format(planning.now.end.dateTime, 'HH:mm') %> open
+        </p>
+      <% } %>
+
+      <% if (!planning.isOpenNow && planning.next) { %>
         <p class="container__text--highlight">
           Maar hij gaat 
           <% if(isToday(planning.next.start.dateTime)) { %>

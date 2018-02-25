@@ -13,11 +13,11 @@ async function getPlanning() {
     return a.start.dateTime - b.start.dateTime;
   });  
   
-  let today = items.filter((item) => {
-    return isSameDay(item.start.dateTime, new Date());
-  });
   let next = items.filter((item) => {
     return isAfter(item.start.dateTime, new Date());
+  })[0];
+  let now = items.filter((item) => {
+    return isAfter(new Date(), item.start.dateTime) && isBefore(new Date(), item.end.dateTime);
   })[0];
   let isOpenNow = items.some((item) => {
     return isAfter(new Date(), item.start.dateTime) && isBefore(new Date(), item.end.dateTime);
@@ -25,6 +25,7 @@ async function getPlanning() {
   
   return {
     isOpenNow,
+    now,
     next
   }
 }
