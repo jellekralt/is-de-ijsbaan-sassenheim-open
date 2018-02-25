@@ -12,6 +12,11 @@ async function getPlanning() {
   .sort((a, b) => {
     return a.start.dateTime - b.start.dateTime;
   });
+
+  console.log('items', items);
+  console.log('new Date()', new Date());
+  
+  
   
   let today = items.filter((item) => {
     return isSameDay(item.start.dateTime, new Date());
