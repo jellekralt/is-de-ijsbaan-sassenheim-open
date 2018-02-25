@@ -31,7 +31,7 @@ function getItems() {
         return reject(err);
       }
 
-      cache.set('calendar-items', response.data.items, 60);
+      cache.set('calendar-items', response.data.items, 300);
 
       resolve(response.data.items);
     });
